@@ -1,6 +1,6 @@
 # Build the project
 
-You can use the command `make` if you using Linux, BSD or MacOS.
+You can use the `make` command if you using Linux, BSD or MacOS.
 
 If you using Windows you can type these commands:
 
