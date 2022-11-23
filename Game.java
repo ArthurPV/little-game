@@ -14,7 +14,8 @@ public class Game {
     private int countMatchstick = 13;
     private final String consoleSeparator = "*************";
 
-    public Game() {}
+    public Game() {
+    }
 
     private void withdrawMatchstick(int n) {
         countMatchstick -= n;
@@ -72,15 +73,15 @@ public class Game {
         do {
             System.out.print("Saisir le nombre a retirer (1..3): ");
             n = scanner.nextInt();
-        } while(!((n >= 1 && n <= 3) && n <= countMatchstick));
+        } while (!((n >= 1 && n <= 3) && n <= countMatchstick));
 
         withdrawMatchstick(n);
     }
 
-	public void withdrawAI(int n) {
-		System.out.printf("L'IA retire %d allumettes\n", n);
-		withdrawMatchstick(n);
-	}
+    public void withdrawAI(int n) {
+        System.out.printf("L'IA retire %d allumettes\n", n);
+        withdrawMatchstick(n);
+    }
 
     public void run() {
         var turn = new Turn();
@@ -89,8 +90,8 @@ public class Game {
         configurePlayer();
 
         if (playAgainstAi) {
-			// 2. Charge l'IA
-			var ai = new AI(this.player1.equals("AI") ? 1 : 2);
+            // 2. Charge l'IA
+            var ai = new AI(this.player1.equals("AI") ? 1 : 2);
 
             while (countMatchstick > 1) {
                 if (turn.whoNext() == 1) {
@@ -99,24 +100,24 @@ public class Game {
                     printPlayer2Resume();
                 }
 
-				if (ai.getPlayer() == turn.whoNext()) {
-					int n = ai.run(turn.getCountTurn(), this.countMatchstick);
+                if (ai.getPlayer() == turn.whoNext()) {
+                    int n = ai.run(turn.getCountTurn(), this.countMatchstick);
 
-					withdrawAI(n);
-				} else {
-					int temp = this.countMatchstick;
+                    withdrawAI(n);
+                } else {
+                    int temp = this.countMatchstick;
 
-					withdraw();
-				}
+                    withdraw();
+                }
 
                 turn.nextTurn();
             }
         } else if (playAiAgainstAi) {
-			// 2. Charge l'IA
-			var ai1 = new AI(1);
-			var ai2 = ai1;
+            // 2. Charge l'IA
+            var ai1 = new AI(1);
+            var ai2 = ai1;
 
-			ai2.setPlayer(2);
+            ai2.setPlayer(2);
 
             while (countMatchstick > 1) {
                 if (turn.whoNext() == 1) {
@@ -125,15 +126,15 @@ public class Game {
                     printPlayer2Resume();
                 }
 
-				if (ai1.getPlayer() == turn.whoNext()) {
-					int n = ai1.run(turn.getCountTurn(), this.countMatchstick);
+                if (ai1.getPlayer() == turn.whoNext()) {
+                    int n = ai1.run(turn.getCountTurn(), this.countMatchstick);
 
-					withdrawAI(n);
-				} else {
-					int n = ai2.run(turn.getCountTurn(), this.countMatchstick);
+                    withdrawAI(n);
+                } else {
+                    int n = ai2.run(turn.getCountTurn(), this.countMatchstick);
 
-					withdrawAI(n);
-				}
+                    withdrawAI(n);
+                }
 
                 turn.nextTurn();
             }

@@ -61,12 +61,12 @@ public class Vector<T extends Object> extends AbstractCollection<T> implements I
 		}
 	}
 
-    public Vector(Vector v) {
-        this.items = v.items;
-        this.len = v.len;
-        this.capacity = v.capacity;
-        this.defaultCapacity = v.defaultCapacity;
-    }
+	public Vector(Vector v) {
+		this.items = v.items;
+		this.len = v.len;
+		this.capacity = v.capacity;
+		this.defaultCapacity = v.defaultCapacity;
+	}
 
 	public void append(Vector<T> v) {
 		for (int i = 0; i < v.len; i++) {
@@ -122,14 +122,14 @@ public class Vector<T extends Object> extends AbstractCollection<T> implements I
 		return len == 0 ? null : get(0);
 	}
 
-//	public void forEach(Function<T, void> f) {
-//		for (int i = 0; i < len(); i++)
-//			f.apply(get(i));
-//	}
+	// public void forEach(Function<T, void> f) {
+	// for (int i = 0; i < len(); i++)
+	// f.apply(get(i));
+	// }
 
 	@SuppressWarnings("unchecked")
 	public T get(int index) {
-		return (T)items[index];
+		return (T) items[index];
 	}
 
 	@SuppressWarnings("unchecked")
@@ -172,7 +172,7 @@ public class Vector<T extends Object> extends AbstractCollection<T> implements I
 
 	public boolean is_in(T value) {
 		for (int i = 0; i < len(); i++) {
-			if (((Object)value).equals((Object)get(i)))
+			if (((Object) value).equals((Object) get(i)))
 				return true;
 		}
 
@@ -192,7 +192,7 @@ public class Vector<T extends Object> extends AbstractCollection<T> implements I
 			for (int i = 0; i + 1 < len; i++) {
 				var v = get(i + 1);
 
-				if (((Number)last).doubleValue() > ((Number)v).doubleValue())
+				if (((Number) last).doubleValue() > ((Number) v).doubleValue())
 					return false;
 
 				last = v;
@@ -202,10 +202,9 @@ public class Vector<T extends Object> extends AbstractCollection<T> implements I
 		return true;
 	}
 
-    public Iterator<T> iterator()
-    {
-        return new VectorIterator<T>(this);
-    }
+	public Iterator<T> iterator() {
+		return new VectorIterator<T>(this);
+	}
 
 	public int len() {
 		return len;
@@ -216,7 +215,7 @@ public class Vector<T extends Object> extends AbstractCollection<T> implements I
 		var v = new Vector<T>();
 
 		for (int i = 0; i < items.length; i++) {
-			v.push(f.apply((T)items[i]));
+			v.push(f.apply((T) items[i]));
 		}
 
 		return v;
@@ -244,18 +243,18 @@ public class Vector<T extends Object> extends AbstractCollection<T> implements I
 			}
 		}
 
-		items[len++] = (Object)item;
+		items[len++] = (Object) item;
 	}
 
-    public static Integer reduce(Vector<Integer> v) {
-        Integer res = 0;
+	public static Integer reduce(Vector<Integer> v) {
+		Integer res = 0;
 
-        for (Object i : v) {
-            res += (Integer)i;
-        }
+		for (Object i : v) {
+			res += (Integer) i;
+		}
 
-        return res;
-    }
+		return res;
+	}
 
 	public void remove(int index) {
 		var v1 = getRange(0, index);
@@ -295,6 +294,6 @@ public class Vector<T extends Object> extends AbstractCollection<T> implements I
 
 	@SuppressWarnings("unchecked")
 	public T[] toArray() {
-		return (T[])items;
+		return (T[]) items;
 	}
 }

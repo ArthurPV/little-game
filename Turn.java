@@ -3,18 +3,19 @@ package project.turn;
 public class Turn {
     private boolean isTurnOfPlayer1 = true;
     private boolean isTurnOfPlayer2 = false;
-	private int countTurn = 0;
+    private int countTurn = 0;
 
-    public Turn() {}
+    public Turn() {
+    }
 
     public Turn(Turn turn) {
         this.isTurnOfPlayer1 = turn.isTurnOfPlayer1;
         this.isTurnOfPlayer2 = turn.isTurnOfPlayer2;
     }
 
-	public int getCountTurn() {
-		return countTurn;
-	}
+    public int getCountTurn() {
+        return countTurn;
+    }
 
     public void nextTurn() {
         if (isTurnOfPlayer1) {
@@ -24,7 +25,7 @@ public class Turn {
             isTurnOfPlayer1 = true;
             isTurnOfPlayer2 = false;
         }
-		countTurn++;
+        countTurn++;
     }
 
     public byte whoNext() {
