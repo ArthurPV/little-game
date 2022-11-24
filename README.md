@@ -1,4 +1,4 @@
-# Build the project
+## Build the project
 
 You can use the `make` command if you using Linux, BSD or MacOS.
 
@@ -11,4 +11,10 @@ javac -d . AI.java
 javac -d . Countdown.java
 javac -d . Game.java
 javac -d . Main.java
+```
+
+## Run the project
+
+```
+java Main
 ```
