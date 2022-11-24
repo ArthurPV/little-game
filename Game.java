@@ -91,7 +91,7 @@ public class Game {
 
         if (playAgainstAi) {
             // 2. Charge l'IA
-            var ai = new AI(this.player1.equals("AI") ? 1 : 2);
+            var ai = new AI(this.aiPlayer);
 
             while (countMatchstick > 1) {
                 if (turn.whoNext() == 1) {
@@ -105,8 +105,6 @@ public class Game {
 
                     withdrawAI(n);
                 } else {
-                    int temp = this.countMatchstick;
-
                     withdraw();
                 }
 
